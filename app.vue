@@ -11,7 +11,7 @@ export default {
 <template>
   <div class="bg-gray-50">
     <Navbar />
-    <div class="relative mb-12 mx-auto w-full max-w-7xl lg:text-left">
+    <div class="relative mb-12 mx-auto lg:text-left">
       <NuxtPage />
     </div>
   </div>

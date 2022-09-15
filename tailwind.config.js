@@ -18,9 +18,10 @@ module.exports = {
     },
     extend: {},
     colors: {
-      gray: colors.gray,
+      gray: colors.blueGray,
       blue: colors.blue,
       white: colors.white,
+      orange: colors.orange,
       ghxGold: {
         DEFAULT: "#F5BC3D",
         50: "#FEF8EC",
