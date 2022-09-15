@@ -1,6 +1,4 @@
 <script>
-import "@/assets/css/tailwind.css";
-
 import Navbar from "./components/Navbar.vue";
 
 export default {
