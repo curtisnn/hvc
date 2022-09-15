@@ -49,9 +49,11 @@ function string_to_slug(str) {
 </script>
 
 <template>
-  <div class="relative mb-12">
-    <main class="lg:relative pt-5">
-      <div class="mx-auto w-full max-w-7xl lg:text-left">
+  <div class="relative mb-12 mt-10 flex justify-center">
+    <main class="lg:relative">
+      <div
+        class="mx-auto w-full max-w-7xl lg:text-left text-center flex justify-center"
+      >
         <div>
           <svg
             xmlns:cc="http://creativecommons.org/ns#"
@@ -479,7 +481,7 @@ function string_to_slug(str) {
           </div>
         </div> -->
         <div v-if="state" class="mt-6">
-          <div class="h-15 mb-5">
+          <div class="mb-5 ml-10">
             <p class="capitalize font-bold text-3xl" v-if="result">
               {{ state.replace("-", " ") }} ({{ result.hits.length }})
             </p>
@@ -501,8 +503,8 @@ function string_to_slug(str) {
                       <div
                         class="min-w-0 flex-1 px-4 flex items-center justify-between"
                       >
-                        <div class="w-1/2 leading-none">
-                          <p class="truncate font-semibold text-blue-800">
+                        <div class="w-2/3 leading-none">
+                          <p class="truncate font-medium text-blue-800 text-lg">
                             {{ hospital.name }}
                             <span class="font-normal text-sm text-gray-500"
                               >– {{ hospital.size }} beds</span
@@ -522,19 +524,19 @@ function string_to_slug(str) {
                               />
                             </svg>
 
-                            <span class="truncate"
+                            <span class="truncate text-gray-500"
                               >{{ hospital.address }}, {{ hospital.city }},
                               {{ hospital.state }}</span
                             >
                           </p>
                         </div>
-                        <div class="hidden md:block">
+                        <div class="hidden md:block flex-1 pl-16 leading-tight">
                           <div>
                             <p
                               v-if="hospital.credentialingProvider"
-                              class="text-sm text-gray-900 mt-1"
+                              class="text-base text-gray-900 mt-1 font-medium"
                             >
-                              <span class="text-xs text-gray-400 mr-2"
+                              <span class="text-xs text-gray-400 mr-2 font-thin"
                                 >credentialing provided by </span
                               ><br />
                               {{ hospital.credentialingProvider }}
