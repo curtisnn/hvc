@@ -19,7 +19,8 @@ module.exports = {
     extend: {},
     colors: {
       gray: colors.gray,
-
+      blue: colors.blue,
+      white: colors.white,
       ghxGold: {
         DEFAULT: "#F5BC3D",
         50: "#FEF8EC",

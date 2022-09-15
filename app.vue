@@ -9,8 +9,10 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="bg-gray-50">
     <Navbar />
-    <NuxtPage />
+    <div class="relative mb-12 mx-auto w-full max-w-7xl lg:text-left">
+      <NuxtPage />
+    </div>
   </div>
 </template>

@@ -25,14 +25,31 @@ function getState(e) {
   state.value = e.target.id;
   search({ query: state.value });
 }
+function string_to_slug(str) {
+  str = str.replace(/^\s+|\s+$/g, ""); // trim
+  str = str.toLowerCase();
 
+  // remove accents, swap ñ for n, etc
+  var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
+  var to = "aaaaeeeeiiiioooouuuunc------";
+  for (var i = 0, l = from.length; i < l; i++) {
+    str = str.replace(new RegExp(from.charAt(i), "g"), to.charAt(i));
+  }
+
+  str = str
+    .replace(/[^a-z0-9 -]/g, "") // remove invalid chars
+    .replace(/\s+/g, "-") // collapse whitespace and replace by -
+    .replace(/-+/g, "-"); // collapse dashes
+
+  return str;
+}
 // onMounted(async () => {
 //   await search({ query: "" });
 // });
 </script>
 
 <template>
-  <div class="relative bg-gray-50 mb-12">
+  <div class="relative mb-12">
     <main class="lg:relative pt-5">
       <div class="mx-auto w-full max-w-7xl lg:text-left">
         <div>
@@ -473,7 +490,10 @@ function getState(e) {
           >
             <ul role="list" class="divide-y divide-gray-200">
               <li v-for="hospital in result.hits">
-                <a href="#" class="block hover:bg-slate-50">
+                <nuxt-link
+                  :to="'/hospital/' + string_to_slug(hospital.name)"
+                  class="block hover:bg-slate-50"
+                >
                   <div class="flex items-center px-4 py-3 sm:px-6">
                     <div
                       class="flex min-w-0 flex-1 items-center justify-between"
@@ -481,21 +501,19 @@ function getState(e) {
                       <div
                         class="min-w-0 flex-1 px-4 flex items-center justify-between"
                       >
-                        <div class="w-1/2">
-                          <p class="truncate text- font-semibold text-blue-600">
+                        <div class="w-1/2 leading-none">
+                          <p class="truncate font-semibold text-blue-800">
                             {{ hospital.name }}
                             <span class="font-normal text-sm text-gray-500"
                               >– {{ hospital.size }} beds</span
                             >
                           </p>
-                          <p
-                            class="mt-2 flex items-center text-sm text-red-500"
-                          >
+                          <p class="mt-1 flex items-center text-sm">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               viewBox="0 0 24 24"
                               fill="currentColor"
-                              class="w-6 h-6"
+                              class="w-5 h-5 text-blue-100"
                             >
                               <path
                                 fill-rule="evenodd"
@@ -548,7 +566,7 @@ function getState(e) {
                       </svg>
                     </div>
                   </div>
-                </a>
+                </nuxt-link>
               </li>
             </ul>
           </div>
