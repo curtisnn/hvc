@@ -6,17 +6,10 @@ const route = useRoute();
 const { result, search } = useAlgoliaSearch("hvc_data_all");
 
 const states = ref([]);
-const state = ref(route.query.state);
 const allStates = ref(stateList);
 
-// query
-console.log(route.query.query);
-const query = ref(route.query.query);
-if (route.query.query) {
-  search({ query: query.value + " " + state.value });
-} else {
-  const query = ref("");
-}
+const state = ref("");
+const query = ref("");
 
 watch(query, (newValue, oldValue) => {
   search({ query: newValue + " " + state.value });
@@ -48,6 +41,11 @@ function removeState() {
 onMounted(async () => {
   // const facet = { name: "state", query: "Arizona" };
   // await search({ facet });
+  if (route.query) {
+    search({ query: route.query.query + " " + route.query.state });
+    state.value = route.query.state;
+    query.value = route.query.query;
+  }
 });
 </script>
 
