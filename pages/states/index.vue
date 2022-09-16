@@ -8,11 +8,19 @@ const { result, search } = useAlgoliaSearch("hvc_data_all");
 const state = ref("");
 const query = ref("");
 
-if (route.query.query && route.query.query !== "undefined") {
+if (
+  route.query.query &&
+  route.query.query !== "undefined" &&
+  route.query.query !== ""
+) {
   query.value = route.query.query;
 }
-if (route.query.state && route.query.state !== "undefined") {
-  state.value = route.query.query;
+if (
+  route.query.state &&
+  route.query.state !== "undefined" &&
+  route.query.state !== ""
+) {
+  state.value = route.query.state;
 }
 
 watch(query, (newValue, oldValue) => {
