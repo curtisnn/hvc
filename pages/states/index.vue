@@ -43,8 +43,6 @@ onMounted(async () => {
   // await search({ facet });
   if (route.query) {
     search({ query: route.query.query + " " + route.query.state });
-    state.value = route.query.state;
-    query.value = route.query.query;
   }
 });
 </script>
