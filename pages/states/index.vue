@@ -5,11 +5,15 @@ const route = useRoute();
 
 const { result, search } = useAlgoliaSearch("hvc_data_all");
 
-const states = ref([]);
-const allStates = ref(stateList);
-
 const state = ref("");
 const query = ref("");
+
+if (route.query.query && route.query.query !== "undefined") {
+  query.value = route.query.query;
+}
+if (route.query.state && route.query.state !== "undefined") {
+  state.value = route.query.query;
+}
 
 watch(query, (newValue, oldValue) => {
   search({ query: newValue + " " + state.value });
@@ -25,7 +29,6 @@ watch(state, (newValue, oldValue) => {
 
 function getState(e) {
   state.value = e.target.id;
-  console.log(e);
   search({ query: query.value + " " + state.value });
 }
 
@@ -38,9 +41,7 @@ function removeState() {
   }
 }
 
-onMounted(async () => {
-  // const facet = { name: "state", query: "Arizona" };
-  // await search({ facet });
+onMounted(() => {
   if (route.query) {
     search({ query: route.query.query + " " + route.query.state });
   }
@@ -495,7 +496,7 @@ onMounted(async () => {
           </div>
         </div>
       </div>
-      <div v-if="states && result" class="mt-6 container mx-auto">
+      <div v-if="state && result" class="mt-6 container mx-auto">
         <!-- <div class="flex space-x-3 mb-5">
           <div
             v-for="state in states"
@@ -561,7 +562,8 @@ onMounted(async () => {
                   <li v-for="hospital in result.hits">
                     <HospitalListing
                       :hospital="hospital"
-                      :query="route.query"
+                      :query="query"
+                      :state="state"
                     />
                   </li>
                 </ul>

@@ -1,6 +1,6 @@
 <script>
 export default {
-  props: ["hospital", "query"],
+  props: ["hospital", "query", "state"],
   data() {
     return {
       openDrawer: false,
@@ -31,13 +31,7 @@ export default {
 
 <template>
   <nuxt-link
-    :to="
-      string_to_slug(hospital.name) +
-      '?query=' +
-      query.query +
-      '&state=' +
-      query.state
-    "
+    :to="string_to_slug(hospital.name) + '?query=' + query + '&state=' + state"
     class="block hover:bg-gray-100"
   >
     <div>
