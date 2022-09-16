@@ -1,13 +1,22 @@
 <script setup>
 import { ref, watch } from "vue";
 import stateList from "../../data/states.json";
+const route = useRoute();
 
 const { result, search } = useAlgoliaSearch("hvc_data_all");
 
+const states = ref([]);
+const state = ref(route.query.state);
 const allStates = ref(stateList);
 
 // query
-const query = ref("");
+console.log(route.query.query);
+const query = ref(route.query.query);
+if (route.query.query) {
+  search({ query: query.value + " " + state.value });
+} else {
+  const query = ref("");
+}
 
 watch(query, (newValue, oldValue) => {
   search({ query: newValue + " " + state.value });
@@ -17,35 +26,17 @@ function clearQuery() {
   query.value = "";
 }
 
-const states = ref([]);
-const state = ref("");
-
 watch(state, (newValue, oldValue) => {
   search({ query: query.value + " " + newValue });
 });
+
 function getState(e) {
   state.value = e.target.id;
   console.log(e);
-  // if (states.value.includes(e.target.id)) {
-  //   removeState(e.target.id);
-  // } else {
-  //   states.value.push(e.target.id);
-  //   console.log(states.value);
-  // }
-
   search({ query: query.value + " " + state.value });
-
-  // search({
-  //   query: "state:arizona OR state:idaho",
-  // });
 }
 
 function removeState() {
-  // states.value = states.value.filter((item) => item !== state);
-  // for (var i = 0; i < states.value.length; i++) {
-  //   search({ query: states.value[i] });
-  // }
-  // search({ query: states.value.join(" OR ") });
   state.value = "";
   if (query.value) {
     search({ query: query.value });
@@ -572,7 +563,10 @@ onMounted(async () => {
               <div class="bg-white sm:rounded-md border border-gray-200">
                 <ul v-if="result" role="list" class="divide-y divide-gray-300">
                   <li v-for="hospital in result.hits">
-                    <HospitalListing :hospital="hospital" />
+                    <HospitalListing
+                      :hospital="hospital"
+                      :query="route.query"
+                    />
                   </li>
                 </ul>
               </div>

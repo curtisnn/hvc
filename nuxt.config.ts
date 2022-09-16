@@ -5,7 +5,8 @@ export default defineNuxtConfig({
 
 	modules: [
         "@nuxtjs/algolia",
-		'@nuxtjs/tailwindcss'
+		'@nuxtjs/tailwindcss',
+		'@nuxt/content'
     ],
 	
     algolia: {
