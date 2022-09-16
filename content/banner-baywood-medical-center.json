@@ -1,1 +1,35 @@
-{"name":"Banner Baywood Medical Center","size":"336","credentialingProvider":"Vendormate Credentialing","address":"6644 East Baywood Avenue","city":"Mesa","state":"Arizona","path":"banner-baywood-medical-center"}
+{
+	"name": "Banner Baywood Medical Center",
+	"size": "336",
+	"credentialingProvider": "Vendormate Credentialing",
+	"address": "6644 East Baywood Avenue",
+	"city": "Mesa",
+	"state": "Arizona",
+	"path": "banner-baywood-medical-center",
+    "ratings": [
+        {
+            "name": "Overall Rating",
+            "value": "3.0"
+        },
+        {
+            "name": "Staff Rating",
+            "value": "3.0"
+        },
+       
+        {
+            "name": "Location Rating",
+            "value": "4.0"
+        },
+        {
+            "name": "Cleanliness Rating",
+            "value": "3.0"
+        },
+        {
+            "name": "Wait Time Rating",
+            "value": "2.0"
+        }
+    ],
+    "lng": 33.4010924,
+    "lat": -111.6884308
+    
+}

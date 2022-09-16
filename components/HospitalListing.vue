@@ -25,12 +25,16 @@ export default {
 
       return str;
     },
+    scrollTop() {
+      window.scrollTo(0, 0);
+    },
   },
 };
 </script>
 
 <template>
   <nuxt-link
+    @click="scrollTop"
     :to="string_to_slug(hospital.name) + '?query=' + query + '&state=' + state"
     class="block hover:bg-gray-100"
   >

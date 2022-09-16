@@ -24,6 +24,7 @@ if (
 }
 
 watch(query, (newValue, oldValue) => {
+  0;
   search({ query: newValue + " " + state.value });
 });
 
@@ -61,9 +62,9 @@ onMounted(() => {
     <main class="lg:relative">
       <div class="pt-10" style="background-color: #9eb6d0">
         <div
-          class="mx-auto w-full max-w-8xl lg:text-left flex justify-center text-center"
+          class="mx-auto w-full max-w-7xl lg:text-left flex justify-center text-center"
         >
-          <div class="pl-64 ml-4">
+          <div class="pl-80 ml-6">
             <svg
               xmlns:cc="http://creativecommons.org/ns#"
               xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -81,7 +82,7 @@ onMounted(() => {
               x="0px"
               y="0px"
               width="940px"
-              height="410px"
+              height="370px"
               viewBox="174 100 1159 593"
               xml:space="preserve"
             >
@@ -460,7 +461,7 @@ onMounted(() => {
         </div>
         <div class="max-w-4xl container lg:text-left mx-auto py-6 px-44">
           <div
-            class="flex items-center mt-10 bg-white px-10 pt-8 pb-6 border border-gray-300"
+            class="flex items-center mt-8 bg-white px-10 pt-6 pb-4 border border-gray-300"
           >
             <div class="w-1/3 px-4">
               <!-- <label for="search" class="text-xs text-gray-700 pl-10"
